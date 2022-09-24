@@ -41,7 +41,7 @@ public class EventController {
         }
     }
 
-    @GetMapping("/create")
+    @GetMapping("/event")
     public String showCreateEventPage(@ModelAttribute("event") Event event,
                                        @ModelAttribute("message") String message,
                                        @ModelAttribute("messageType") String messageType) {
@@ -55,7 +55,7 @@ public class EventController {
             redirectAttributes.addFlashAttribute("message",
                     String.format("Event(%s) already exists!", searchEvent.getName()));
             redirectAttributes.addFlashAttribute("messageType", "error");
-            return "redirect:/event/create";
+            return "redirect:/event/list-event";
         } catch (Exception e) {
             eventService.createEvent(event);
             redirectAttributes.addFlashAttribute("message",

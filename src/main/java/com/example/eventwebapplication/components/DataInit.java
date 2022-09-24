@@ -29,7 +29,8 @@ public class DataInit {
 
     @PostConstruct
     public void init() {
-        initAuthorityData();
+
+        initEventData();
         initAuthorityData();
         initUserData();
     }

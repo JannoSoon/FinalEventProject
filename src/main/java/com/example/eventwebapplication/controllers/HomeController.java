@@ -16,7 +16,7 @@ public class HomeController {
         boolean isloggedIn = false;
         if(messageType.equals("success")) {
             isloggedIn = true;
-            model.addAttribute("message", "Hello, ".concat(SecurityContextHolder.getContext().getAuthentication().getName()).concat("!"));
+            model.addAttribute("message", "Hello you are welcome, ".concat(SecurityContextHolder.getContext().getAuthentication().getName()).concat("!"));
 
         }
         model.addAttribute("isLoggedIn", isloggedIn);
