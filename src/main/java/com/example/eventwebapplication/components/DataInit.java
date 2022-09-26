@@ -30,8 +30,8 @@ public class DataInit {
     @PostConstruct
     public void init() {
 
-        initEventData();
         initAuthorityData();
+        initEventData();
         initUserData();
     }
 

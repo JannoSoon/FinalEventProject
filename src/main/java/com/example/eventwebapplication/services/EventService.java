@@ -2,9 +2,7 @@ package com.example.eventwebapplication.services;
 
 import com.example.eventwebapplication.exceptions.EventNotFoundException;
 import com.example.eventwebapplication.models.Event;
-import com.example.eventwebapplication.models.EventComment;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -36,8 +34,10 @@ public interface EventService {
 
         void restoreEventById(UUID id);
 
-     //List<EventComment> getEventComments(UUID eventId);
+     List<Event> getAllCommentsBy(UUID eventId);
 
-     void subscribeEvent(String title, UUID userId);
+    List<Event> getEventComments(UUID eventId);
+
+    void subscribeEvent(String title, UUID userId);
 }
 

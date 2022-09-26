@@ -15,8 +15,8 @@
                 <h1 class="display-5 fw-bold">Welcome to Fine Luxury Event!</h1>
                 <p class="col-md-8 fs-4" th:if="${isloggedIn}"><span th:text="${message}"></span></p>
             </div>
-            <div sec:authorize="!isAuthenticated()">
-                <p class="col-md-8 fs-4">Hello you are welcome, <span th:text="${#authentication.name}"></span>!</p>
+            <div sec:authorize="isAuthenticated()">
+
             </div>
         </div>
 
