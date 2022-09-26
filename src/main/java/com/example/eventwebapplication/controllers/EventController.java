@@ -41,7 +41,7 @@ public class EventController {
         }
     }
 
-    @GetMapping("/event")
+    @GetMapping("/create")
     public String showCreateEventPage(@ModelAttribute("event") Event event,
                                        @ModelAttribute("message") String message,
                                        @ModelAttribute("messageType") String messageType) {
