@@ -132,5 +132,12 @@ public class EventController {
         redirectAttributes.addFlashAttribute("messageType", "error");
         return "redirect:/event";
     }
+
+    @GetMapping("/search")
+    public String showSearchEventPage(@ModelAttribute("event") Event event,
+                                      @ModelAttribute("message") String message,
+                                      @ModelAttribute("messageType") String messageType) {
+        return "event";
+    }
 }
 
