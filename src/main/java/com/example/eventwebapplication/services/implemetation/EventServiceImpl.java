@@ -61,14 +61,8 @@ public class EventServiceImpl implements EventService {
 
     @Override
     public void deleteEventById(UUID id)  {
-        try {
-            findEventById(id).ifPresent(event -> {
-                event.setActive(false);
-                deleteEventById(id);
-            });
-        } catch (EventNotFoundException e) {
-            throw new RuntimeException(e);
-        }
+        eventRepository.deleteById(id);
+
     }
 
     @Override
