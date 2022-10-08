@@ -27,6 +27,7 @@ public class User extends Auditable<String> implements Serializable {
     private String password;
     //private String email;
     //private String Address;
+    //private String phoneNumber;
 
 
     @OneToOne(cascade = CascadeType.MERGE)
