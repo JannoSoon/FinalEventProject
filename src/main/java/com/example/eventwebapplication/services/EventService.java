@@ -26,6 +26,8 @@ public interface EventService {
 
         List<Event> getAllEvents();
 
+        List<Event> getByKeyword(String keyword);
+
 
         void updateEvent(Event event) throws EventNotFoundException;
 

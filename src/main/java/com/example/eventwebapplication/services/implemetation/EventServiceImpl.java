@@ -29,7 +29,12 @@ public class EventServiceImpl implements EventService {
 
     @Override
     public List<Event> getAllEvents() {
-        return eventRepository.findAll();
+        List<Event> list =  (List<Event>)eventRepository.findAll();
+        return list;
+    }
+
+    public List<Event> getByKeyword(String keyword){
+        return eventRepository.findByKeyword(keyword);
     }
 
     @Override

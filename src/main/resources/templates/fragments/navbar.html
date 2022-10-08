@@ -9,7 +9,7 @@
         <div class="collapse navbar-collapse text-danger" id="navbarNav" sec:authorize="isAuthenticated()">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="/static">Home</a>
+                    <a class="nav-link" href="/">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/event">Event</a>
@@ -24,8 +24,8 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/logout">Logout</a>
                 </li>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <form class="d-flex" role="search" th:action="@{/event/search}" method="get">
+                    <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search" th:name="keyword">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
                 <div>

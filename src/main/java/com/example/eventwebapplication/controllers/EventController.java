@@ -134,11 +134,14 @@ public class EventController {
         return "redirect:/event";
     }
 
-    @GetMapping("/search")
-    public String showSearchEventPage(@ModelAttribute("event") Event event,
-                                      @ModelAttribute("message") String message,
-                                      @ModelAttribute("messageType") String messageType) {
-        return "redirect:/event";
+
+   @GetMapping("/search")
+    public String getEvent(Model model, @RequestParam(value="keyword", required=false) String keyword) {
+       List<Event> list = keyword!=null ? eventService.getByKeyword(keyword) : eventService.getAllEvents();
+       model.addAttribute("list", list);
+       return "event/search-event";
     }
+
+
 }
 

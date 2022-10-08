@@ -31,9 +31,10 @@ public class Event extends Auditable<String> implements Serializable {
     private Date fromDate;
     private String fromTime;
 
+
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date toDate;
-    private String toTime;
+
 
     private String description;
     private boolean isActive;
