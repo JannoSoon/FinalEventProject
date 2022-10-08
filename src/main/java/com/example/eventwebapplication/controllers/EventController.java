@@ -3,6 +3,7 @@ package com.example.eventwebapplication.controllers;
 import com.example.eventwebapplication.exceptions.EventNotFoundException;
 import com.example.eventwebapplication.models.Event;
 import com.example.eventwebapplication.models.EventComment;
+import com.example.eventwebapplication.repositories.EventRepository;
 import com.example.eventwebapplication.services.EventCommentService;
 import com.example.eventwebapplication.services.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -133,11 +134,14 @@ public class EventController {
         return "redirect:/event";
     }
 
-    @GetMapping("/search")
-    public String showSearchEventPage(@ModelAttribute("event") Event event,
-                                      @ModelAttribute("message") String message,
-                                      @ModelAttribute("messageType") String messageType) {
-        return "event";
+
+   @GetMapping("/search")
+    public String getEvent(Model model, @RequestParam(value="keyword", required=false) String keyword) {
+       List<Event> list = keyword!=null ? eventService.getByKeyword(keyword) : eventService.getAllEvents();
+       model.addAttribute("list", list);
+       return "event/search-event";
     }
+
+
 }
 

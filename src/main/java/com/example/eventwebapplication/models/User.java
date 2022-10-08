@@ -23,7 +23,11 @@ public class User extends Auditable<String> implements Serializable {
     private UUID id;
 
     private String userName;
+    //private String lastName;
     private String password;
+    //private String email;
+    //private String Address;
+
 
     @OneToOne(cascade = CascadeType.MERGE)
     private Authority authority;

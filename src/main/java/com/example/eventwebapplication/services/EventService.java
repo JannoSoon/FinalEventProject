@@ -26,13 +26,17 @@ public interface EventService {
 
         List<Event> getAllEvents();
 
+        List<Event> getByKeyword(String keyword);
+
 
         void updateEvent(Event event) throws EventNotFoundException;
 
 
         void deleteEventById(UUID id);
 
-        void restoreEventById(UUID id);
+        Event restoreEventById(UUID id);
+
+
 
      List<Event> getAllCommentsBy(UUID eventId);
 

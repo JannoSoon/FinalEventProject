@@ -1,50 +1,77 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Signup</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
-<body>
-<div class="container-fluid">
-    <div th:replace="fragments/navbar"></div>
-    <div class="container py-4">
-        <div class="p-5 mb-4 bg-light rounded-3">
-            <div class="container-fluid py-5">
-                <h1 class="display-5 fw-bold">Signup For Event</h1>
-                <div class="alert alert-danger" role="alert" th:if="${messageType} == 'error'">
-                    <span th:text="${message}"></span>
+<body class="hold-transition register-page">
+<div class="register-box">
+    <div class="card">
+        <div class="card-body register-card-body">
+            <p class="login-box-msg">Register a new account</p>
+
+            <form action="#" th:action="@{/signup}" th:object="${userData}" method="post">
+                <div class="alert alert-danger" th:if="${#fields.hasErrors('*')}">
+                    <p th:each="err : ${#fields.errors('*')}" th:text="${err}"></p>
                 </div>
-                <div class="alert alert-danger" role="alert" th:if="${authorities.size()} == 0">
-                    <span>Signup event unavailable!</span>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control"  th:field="*{firstName}" placeholder="First Name" th:errorclass="is-invalid">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-user"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control"  th:field="*{lastName}" placeholder="Last Name" th:errorclass="is-invalid">
+
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-user"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    <input type="password" class="form-control" th:field="*{password}" placeholder="Password" th:errorclass="is-invalid">
+
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-lock"></span>
+                        </div>
+                    </div>
                 </div>
 
-                <form action="#" method="post" th:action="@{/signup}" th:object="${user}">
-                    <div class="form-group mb-3">
-                        <label for="username">Username</label>
-                        <input class="form-control" id="username" th:field="*{userName}" type="text" required>
+                <div class="input-group mb-3">
+                    <input type="password" class="form-control" placeholder="Retype password">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-lock"></span>
+                        </div>
                     </div>
-                    <div class="form-group mb-3">
-                        <label for="password">Password</label>
-                        <input class="form-control" id="password" th:field="*{password}" type="password" required>
+                </div>
+                <div class="input-group mb-3">
+
+                    <input type="email" class="form-control" th:field="*{email}" placeholder="Email" th:errorclass="is-invalid">
+
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-envelope"></span>
+                        </div>
                     </div>
-                    <div class="form-group mb-3">
-                        <label for="eventName">EventName</label>
-                        <input class="form-control" id="eventName" th:field="*{eventName}" type="password" required>
+                </div>
+
+                <div class="input-group mb-3">
+
+                    <input type="email" class="form-control" th:field="*{address}" placeholder="Address" th:errorclass="is-invalid">
+
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-house"></span>
+                        </div>
                     </div>
-                    <div class="form-group mb-3">
-                        <select class="form-select" aria-label="authorities" th:field="*{authority.id}">
-                            <option th:each="authority: ${authorities}" th:text="${authority.name.replace('_', ' ')}" th:value="${authority.id}"></option>
-                        </select>
-                    </div>
-                    <a class="btn btn-light mb-3" type="button" href="/static">Cancel</a>
-                    <button class="btn btn-outline-primary mb-3" type="submit">Signup</button>
-                </form>
-            </div>
+                </div>
+
         </div>
-    </div>
+        <!-- /.form-box -->
+    </div><!-- /.card -->
 </div>
-<div th:replace="fragments/script-fragment"></div>
 </body>
 </html>

@@ -4,10 +4,12 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.UUID;
 
 @Data
@@ -24,8 +26,16 @@ public class Event extends Auditable<String> implements Serializable {
     private UUID id;
 
     private String name;
-    private LocalDateTime fromDate;
-    private LocalDateTime toDate;
+
+    @DateTimeFormat(pattern = "yyy-MM-dd")
+    private Date fromDate;
+    private String fromTime;
+
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date toDate;
+
+
     private String description;
     private boolean isActive;
 
