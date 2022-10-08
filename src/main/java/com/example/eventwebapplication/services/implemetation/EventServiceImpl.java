@@ -14,8 +14,6 @@ import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
-import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
-
 @Service
 public class EventServiceImpl implements EventService {
 
@@ -62,20 +60,14 @@ public class EventServiceImpl implements EventService {
     @Override
     public void deleteEventById(UUID id)  {
         eventRepository.deleteById(id);
-
     }
 
     @Override
-    public void restoreEventById(UUID id) {
-        try {
-            findEventById(id).ifPresent(event -> {
-                event.setActive(true);
-                restoreEventById(id);
-            });
-        } catch (EventNotFoundException e) {
-            throw new RuntimeException(e);
-        }
+    public Event restoreEventById(UUID eventId) {
+        return eventRepository.getReferenceById(eventId);
     }
+
+
 
     @Override
     public List<Event> getAllCommentsBy(UUID eventId) {

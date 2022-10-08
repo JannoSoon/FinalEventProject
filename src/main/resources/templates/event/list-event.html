@@ -37,9 +37,10 @@
                                 <span class="d-inline-block text-truncate" style="max-width: 70px;" th:text="${event.id}"></span>
                             </a>
                         </th>
+
                         <td th:text="${event.name}"></td>
-                        <td th:text="${event.fromDate}"></td>
-                        <td th:text="${event.toDate}"></td>
+                        <td th:text="${#dates.format(event.fromDate, 'yyyy-MM-dd')}">fromDate</td>
+                        <td th:text="${#dates.format(event.toDate, 'yyyy-MM-dd')}">toDate</td>
                         <td th:text="${event.description}"></td>
                         <td>
                             <a class="btn btn-primary" style="margin-right:15px;" role="button" th:href="@{/event/update/{id}(id=${event.id})}" th:if="${event.isActive()}">

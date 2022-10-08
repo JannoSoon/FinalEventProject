@@ -32,7 +32,9 @@ public interface EventService {
 
         void deleteEventById(UUID id);
 
-        void restoreEventById(UUID id);
+        Event restoreEventById(UUID id);
+
+
 
      List<Event> getAllCommentsBy(UUID eventId);
 

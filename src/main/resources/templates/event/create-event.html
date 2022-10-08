@@ -22,11 +22,11 @@
                     </div>
                     <div class="form-group mb-3">
                         <label for="fromDate">fromDate</label>
-                        <input class="form-control" id="fromDate" th:text="${#temporals.format(localDateTime, 'dd-MM-yyyy HH:mm')}" required>
+                        <input type="date" class="form-control" id="fromDate" th:name="fromDate">
                     </div>
                     <div class="form-group mb-3">
                         <label for="toDate">toDate</label>
-                        <input class="form-control" id="toDate" th:text="${#temporals.format(localDateTime, 'dd-MM-yyyy HH:mm')}" required>
+                        <input type="date" class="form-control" id="toDate" th:name="toDate">
                     </div>
                     <div class="form-group mb-3">
                         <label for="description">Description</label>

@@ -17,4 +17,6 @@ public interface EventRepository extends JpaRepository<Event, UUID> {
     Optional<Event> findById(UUID id);
 
     Optional<Event> findByFromDate(LocalDateTime fromDate);
+
+
 }
